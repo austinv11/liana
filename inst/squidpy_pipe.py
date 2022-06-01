@@ -1,3 +1,15 @@
+# Annoying patch I have to make for reticulate which doesn't like inv() for some reason??
+
+import scipy
+
+_old_inv = scipy.linalg.inv
+def patched_inv(*args, **kwargs):
+    try:
+        return _old_inv(*args, **kwargs)
+    except:
+        return scipy.linalg.pinv(*args, **kwargs)
+scipy.linalg.inv = patched_inv
+
 import pandas as pd
 import scanpy as sc
 import squidpy as sp
