@@ -1,6 +1,6 @@
 # Annoying patch I have to make for reticulate which doesn't like inv() for some reason??
 
-import scipy
+import scipy.linalg
 
 _old_inv = scipy.linalg.inv
 def patched_inv(*args, **kwargs):
